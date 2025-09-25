@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_memset.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
+/*   By: afitri <afitri@student.42kl.edu.my>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/05/19 16:06:37 by eddlim            #+#    #+#             */
-/*   Updated: 2025/05/31 13:03:26 by marvin           ###   ########.fr       */
+/*   Created: 2025/06/08 08:10:11 by afitri            #+#    #+#             */
+/*   Updated: 2025/06/08 08:10:30 by afitri           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,31 +14,10 @@
 
 void	*ft_memset(void *b, int c, size_t len)
 {
-	unsigned char	*s;
+	unsigned char	*p;
 
-	s = (unsigned char *) b;
-	while (len > 0)
-	{
-		*s++ = c;
-		len--;
-	}
+	p = b;
+	while (len--)
+		*p++ = (unsigned char)c;
 	return (b);
 }
-/*#include <unistd.h>
-int	main(void)
-{
-	char	s[10];
-	int	i = 0;
-	while (i < 10)
-	{
-		s[i] = 'X';
-		i++;
-	}
-	ft_memset(s, 'A', 5);
-	i = 0;
-	while (i < 10)
-	{
-		write(1, &s[i], 1);
-		i++;
-	}		
-}*/

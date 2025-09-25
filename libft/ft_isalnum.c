@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_isalnum.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: eddlim <eddlim@student.42kl.edu.my>        +#+  +:+       +#+        */
+/*   By: afitri <afitri@student.42kl.edu.my>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/05/19 15:36:56 by eddlim            #+#    #+#             */
-/*   Updated: 2025/05/19 15:52:51 by eddlim           ###   ########.fr       */
+/*   Created: 2025/06/08 08:05:24 by afitri            #+#    #+#             */
+/*   Updated: 2025/06/08 08:05:32 by afitri           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,15 +14,5 @@
 
 int	ft_isalnum(int c)
 {
-	if (ft_isalpha(c) || ft_isdigit(c))
-		return (1);
-	return (0);
+	return (ft_isalpha(c) || ft_isdigit(c));
 }
-/*
-#include <stdio.h>
-
-int	main(void)
-{
-	printf("%d", ft_isalnum('s'));
-	printf("%d", ft_isalnum('8'));
-}*/

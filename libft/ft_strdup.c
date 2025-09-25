@@ -3,92 +3,53 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strdup.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
+/*   By: afitri <afitri@student.42kl.edu.my>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/05/22 20:45:38 by marvin            #+#    #+#             */
-/*   Updated: 2025/05/22 20:45:38 by marvin           ###   ########.fr       */
+/*   Created: 2025/04/24 11:19:07 by afitri            #+#    #+#             */
+/*   Updated: 2025/04/24 12:46:55 by afitri           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
+#include <stdlib.h>
 
-char	*ft_strdup(const char *s1)
+char	*ft_strdup(const char *src)
 {
-	int		len;
-	char	*dest;
+	char	*new;
 	int		i;
+	int		size;
 
-	len = 0;
-	while (s1[len])
-		len++;
-	dest = (char *)malloc(sizeof(char) * len + 1);
-	if (dest == NULL)
+	size = 0;
+	while (src[size])
+		size++;
+	new = malloc(sizeof(char) * (size + 1));
+	if (!new)
 		return (NULL);
 	i = 0;
-	while (i <= len)
+	while (src[i])
 	{
-		dest[i] = s1[i];
+		new[i] = src[i];
 		i++;
 	}
-	return (dest);
+	new[i] = '\0';
+	return (new);
 }
 /*
-#include <stdio.h>
-#include <string.h> 
-
-int main(void)
+#include <unistd.h>
+int		main(void)
 {
-	char *original1 = "Hello, World!";
-	char *original2 = ""; // Empty string
-	char *duplicate1;
-	char *duplicate2;
+	char	*original = "Hello, world!";
+	char	*copy;
 
-	printf("Testing ft_strdup:\n");
-	printf("----------------------------------------\n");
-
-	// Test Case 1: Duplicating a standard string
-	printf("Test 1: Duplicating \"%s\"\n", original1);
-	duplicate1 = ft_strdup(original1);
-	if (duplicate1 != NULL)
+	copy = ft_strdup(original);
+	if (copy)
 	{
-		printf("Original: \"%s\"\n", original1);
-		printf("Duplicate: \"%s\"\n", duplicate1);
-		// Optional: Compare with standard strdup
-		// char *std_duplicate1 = strdup(original1);
-		// printf("Standard strdup: \"%s\"\n", std_duplicate1);
-		// printf("Comparison result: %d\n", strcmp(duplicate1, std_duplicate1));
-		// free(std_duplicate1);
-		free(duplicate1); // Free allocated memory
+		write(1, "Original: ", 10);
+		write(1, original, ft_strlen(original));
+		write(1, "\nCopy: ", 7);
+		write(1, copy, ft_strlen(copy));
+		write(1, "\n", 1);
+		free(copy);
 	}
-	else
-	{
-		printf("ft_strdup returned NULL (allocation failed?)\n");
-	}
-	printf("----------------------------------------\n");
-
-	// Test Case 2: Duplicating an empty string
-	printf("Test 2: Duplicating empty string \"%s\"\n", original2);
-	duplicate2 = ft_strdup(original2);
-	if (duplicate2 != NULL)
-	{
-		printf("Original: \"%s\"\n", original2);
-		printf("Duplicate: \"%s\"\n", duplicate2);
-		// Optional: Compare with standard strdup
-		// char *std_duplicate2 = strdup(original2);
-		// printf("Standard strdup: \"%s\"\n", std_duplicate2);
-		// printf("Comparison result: %d\n", strcmp(duplicate2, std_duplicate2));
-		// free(std_duplicate2);
-		free(duplicate2); // Free allocated memory
-	}
-	else
-	{
-		printf("ft_strdup returned NULL (allocation failed?)\n");
-	}
-	printf("----------------------------------------\n");
-
-	// Note: Testing malloc failure directly is difficult without
-	// specific system calls or mocking libraries.
-
 	return (0);
-}
-*/
+}*/

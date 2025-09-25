@@ -3,29 +3,36 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strjoin.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
+/*   By: afitri <afitri@student.42kl.edu.my>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/05/25 21:36:44 by marvin            #+#    #+#             */
-/*   Updated: 2025/05/26 22:08:57 by marvin           ###   ########.fr       */
+/*   Created: 2025/06/10 17:23:00 by afitri            #+#    #+#             */
+/*   Updated: 2025/06/10 18:32:15 by afitri           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
+#include <stdlib.h>
 
 char	*ft_strjoin(char const *s1, char const *s2)
 {
-	size_t	s1_len;
-	size_t	s2_len;
-	char	*dest;
+	char	*joined;
+	size_t	len1;
+	size_t	len2;
+	size_t	i;
 
 	if (!s1 || !s2)
 		return (NULL);
-	s1_len = ft_strlen(s1);
-	s2_len = ft_strlen(s2);
-	dest = ft_calloc((s1_len + s2_len + 1), sizeof(char));
-	if (dest == NULL)
+	len1 = ft_strlen(s1);
+	len2 = ft_strlen(s2);
+	joined = (char *)malloc(sizeof(char) * (len1 + len2 + 1));
+	if (!joined)
 		return (NULL);
-	ft_memmove(dest, s1, s1_len);
-	ft_memmove(dest + s1_len, s2, s2_len);
-	return (dest);
+	i = -1;
+	while (++i < len1)
+		joined[i] = s1[i];
+	i = -1;
+	while (++i < len2)
+		joined[len1 + i] = s2[i];
+	joined[len1 + len2] = '\0';
+	return (joined);
 }

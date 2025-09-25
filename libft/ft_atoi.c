@@ -3,70 +3,34 @@
 /*                                                        :::      ::::::::   */
 /*   ft_atoi.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
+/*   By: afitri <afitri@student.42kl.edu.my>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/05/22 13:25:30 by marvin            #+#    #+#             */
-/*   Updated: 2025/05/22 13:25:30 by marvin           ###   ########.fr       */
+/*   Created: 2025/04/17 19:58:20 by afitri            #+#    #+#             */
+/*   Updated: 2025/04/24 14:20:21 by afitri           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
-#include "libft.h"
-
-int	is_space(char c)
-{
-	if ((c >= 9 && c <= 13) || c == 32)
-		return (1);
-	return (0);
-}
-
-int	parse_sign(const char *str, int *i)
-{
-	int	sign;
-	int	count;
-
-	sign = 1;
-	count = 0;
-	while (str[*i] == '+' || str[*i] == '-')
-	{
-		count++;
-		if (count > 1)
-			return (0);
-		if (str[*i] == '-')
-			sign *= -1;
-		(*i)++;
-	}
-	return (sign);
-}
 
 int	ft_atoi(const char *str)
 {
 	int	i;
 	int	sign;
-	int	result;
+	int	o;
 
 	i = 0;
-	result = 0;
-	while (is_space(str[i]))
+	sign = 1;
+	o = 0;
+	while (str[i] == ' ' || (str[i] >= 9 && str[i] <= 13))
 		i++;
-	sign = parse_sign(str, &i);
-	if (sign == 0)
-		return (0);
-	while (str[i] >= '0' && str[i] <= '9')
+	if (str[i] == '-' || str[i] == '+')
 	{
-		result = result * 10 + (str[i] - '0');
+		if (str[i] == '-')
+			sign = -1;
 		i++;
 	}
-	return (result * sign);
+	while (str[i] >= '0' && str[i] <= '9')
+	{
+		o = (o * 10) + (str[i] - '0');
+		i++;
+	}
+	return (o * sign);
 }
-/*
-#include <stdio.h>
-#include <stdlib.h>
-
-int	main(void)
-{
-	char	*str = "  -123456+789";
-	int		num = ft_atoi(str);
-	printf("%d\n", num);
-	int		num2 = atoi(str);
-	printf("%d\n", num2);
-}*/

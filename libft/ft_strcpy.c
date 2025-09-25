@@ -1,33 +1,39 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlcat.c                                       :+:      :+:    :+:   */
+/*   ft_strcpy.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: afitri <afitri@student.42kl.edu.my>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/06/08 12:01:00 by afitri            #+#    #+#             */
-/*   Updated: 2025/06/08 16:58:33 by afitri           ###   ########.fr       */
+/*   Created: 2025/04/11 02:44:43 by afitri            #+#    #+#             */
+/*   Updated: 2025/04/16 14:24:44 by afitri           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
-#include "libft.h"
-
-size_t	ft_strlcat(char *dst, const char *src, size_t dstsize)
+/*
+#include <stdio.h>
+*/
+char	*ft_strcpy(char *dest, char *src)
 {
-	size_t	dst_len;
-	size_t	src_len;
-	size_t	i;
+	int	i;
 
-	dst_len = ft_strlen(dst);
-	src_len = ft_strlen(src);
-	if (dstsize <= dst_len)
-		return (dstsize + src_len);
 	i = 0;
-	while (src[i] && dst_len + i < dstsize - 1)
+	while (src[i])
 	{
-		dst[dst_len + i] = src[i];
+		dest[i] = src[i];
 		i++;
 	}
-	dst[dst_len + i] = '\0';
-	return (dst_len + src_len);
+	dest[i] = '\0';
+	return (dest);
 }
+/*
+int	main(void)
+{
+	int	i;
+	char a[100];
+	char b[100];
+
+	ft_strcpy(a,"helo");
+	ft_strcpy(b,"bye");
+	
+	printf("a:%s b:%s", a,b);
+}*/
